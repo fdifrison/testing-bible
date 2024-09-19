@@ -14,18 +14,18 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <junit-jupiter.version>5.10.3</junit-jupiter.version>
+        <junit-jupiter.version>5.11.0</junit-jupiter.version>
         <assertj-core.version>3.26.3</assertj-core.version>
 
-        <json-unit-assertj.version>3.2.7</json-unit-assertj.version>
-        <jackson-databind.version>2.17.0</jackson-databind.version>
-        <jackson-datatype-jsr310.version>2.15.3</jackson-datatype-jsr310.version>
+        <json-unit-assertj.version>3.4.1</json-unit-assertj.version>
+        <jackson-databind.version>2.18.0-rc1</jackson-databind.version>
+        <jackson-datatype-jsr310.version>2.18.0-rc1</jackson-datatype-jsr310.version>
 
         <instancio-junit.version>5.0.2</instancio-junit.version>
 
-        <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
-        <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
-        <mockito-bom.version>5.12.0</mockito-bom.version>
+        <spotless-maven-plugin.version>2.44.0.BETA2</spotless-maven-plugin.version>
+        <xmlunit-assertj.version>2.10.0</xmlunit-assertj.version>
+        <mockito-bom.version>5.13.0</mockito-bom.version>
     </properties>
 
     <modules>
