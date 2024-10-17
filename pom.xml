@@ -20,10 +20,8 @@
         <spotless-maven-plugin.version>2.44.0.BETA2</spotless-maven-plugin.version>
         <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <htmlunit.version>4.2.0</htmlunit.version>
     </properties>
-    <dependencies>
-
-    </dependencies>
 
     <modules>
         <module>primer</module>
@@ -35,6 +33,11 @@
                 <groupId>org.instancio</groupId>
                 <artifactId>instancio-junit</artifactId>
                 <version>${instancio-junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.htmlunit</groupId>
+                <artifactId>htmlunit</artifactId>
+                <version>${htmlunit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
