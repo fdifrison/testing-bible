@@ -7,9 +7,8 @@
         <artifactId>testing-bible</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.fdifrison.catan.core</groupId>
+
     <artifactId>primer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
