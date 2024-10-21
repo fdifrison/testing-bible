@@ -1,4 +1,4 @@
-package com.fdifrison.catan.core.primer;
+package com.fdifrison.primer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

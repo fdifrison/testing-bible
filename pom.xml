@@ -16,8 +16,10 @@
     <packaging>pom</packaging>
 
     <properties>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
         <instancio-junit.version>5.0.2</instancio-junit.version>
-        <spotless-maven-plugin.version>2.44.0.BETA2</spotless-maven-plugin.version>
+        <spotless-maven-plugin.version>2.44.0.BETA3</spotless-maven-plugin.version>
         <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <htmlunit.version>4.2.0</htmlunit.version>
@@ -25,6 +27,7 @@
 
     <modules>
         <module>primer</module>
+        <module>plain-mockito</module>
     </modules>
 
     <dependencyManagement>
