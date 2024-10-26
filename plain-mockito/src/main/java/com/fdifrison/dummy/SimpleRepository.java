@@ -1,4 +1,4 @@
-package com.fdifrison.mocks;
+package com.fdifrison.dummy;
 
 public class SimpleRepository {
 }
