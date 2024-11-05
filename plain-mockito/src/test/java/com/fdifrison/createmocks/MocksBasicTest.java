@@ -40,8 +40,8 @@ class MocksBasicTest {
         void setUp() {
             // search for the @Mock annotated objects
             MockitoAnnotations.openMocks(this);
-            // we could manually instantiate the service or let @InjectMocks looking for a suitable constructor
-            // service = new SomeService(repository);
+            // TODO we could manually instantiate the service or let @InjectMocks looking for a suitable constructor
+            //  service = new SomeService(repository);
         }
 
         @Test

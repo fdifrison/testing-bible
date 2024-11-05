@@ -9,36 +9,40 @@ public class User {
   private String email;
   private LocalDateTime createdAt;
 
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
   public Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public User setId(Long id) {
     this.id = id;
+    return this;
   }
 
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public User setUsername(String username) {
     this.username = username;
+    return this;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public User setEmail(String email) {
+    this.email = email;
+    return this;
   }
 
   public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(LocalDateTime createdAt) {
+  public User setCreatedAt(LocalDateTime createdAt) {
     this.createdAt = createdAt;
+    return this;
   }
 
   @Override
