@@ -1,4 +1,4 @@
-package com.fdifrison.createmocks;
+package com.fdifrison.Xcreatemocks;
 
 import com.fdifrison.dummy.SimpleRepository;
 import com.fdifrison.dummy.SimpleService;

@@ -1,4 +1,4 @@
-package com.fdifrison.stubbingmethodcalls;
+package com.fdifrison.XXstubbingmethodcalls;
 
 import com.fdifrison.app.*;
 import org.instancio.Instancio;
@@ -31,18 +31,17 @@ public class BDDStubbingStyleTest {
     @DisplayName("Basic stubbing with BDD style")
     void basicStubbingWithBDDStyle() {
         var user = Instancio.create(User.class).setUsername("fdifrison").setId(null);
-        given(userRepository.save(user))
+        given(bannedUsersClient.isBanned(anyString(), any())).willReturn(false);
+        given(userRepository.findByUsername("fdifrison"))
+                .willReturn(null);
+        given(userRepository.save(any(User.class)))
                 .willAnswer(invocation -> {
                     var savedUser = invocation.getArgument(0, User.class);
                     savedUser.setId(1L);
                     return savedUser;
                 });
-        var saved = userRepository.save(user);
-        given(bannedUsersClient.isBanned(anyString(), any())).willReturn(false);
-        given(userRepository.findByUsername("fdifrison"))
-                .willReturn(saved);
         var registered = classUnderTest.registerUser("fdifrison", Instancio.create(ContactInformation.class));
-        assertThat(registered).isEqualTo(saved);
+        assertThat(registered).hasFieldOrPropertyWithValue("id", 1L);
 
     }
 

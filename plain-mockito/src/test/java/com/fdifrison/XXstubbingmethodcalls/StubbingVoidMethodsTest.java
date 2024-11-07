@@ -1,7 +1,6 @@
-package com.fdifrison.stubbingmethodcalls;
+package com.fdifrison.XXstubbingmethodcalls;
 
 import com.fdifrison.app.EventNotifier;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
