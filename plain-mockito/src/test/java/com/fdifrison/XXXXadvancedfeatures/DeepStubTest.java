@@ -1,5 +1,9 @@
 package com.fdifrison.XXXXadvancedfeatures;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
+
 import com.fdifrison.app.Address;
 import com.fdifrison.app.ContactInformation;
 import org.junit.jupiter.api.DisplayName;
@@ -7,10 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Answers;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 
 @ExtendWith(MockitoExtension.class)
 public class DeepStubTest {
@@ -34,7 +34,6 @@ public class DeepStubTest {
         given(address.getCity()).willReturn("Stormwind");
 
         assertThat(contactInfo.getAddress().getCity()).isEqualTo("Stormwind");
-
     }
 
     @Test
@@ -44,6 +43,5 @@ public class DeepStubTest {
         var contactInfo = mock(ContactInformation.class, Answers.RETURNS_DEEP_STUBS);
         given(contactInfo.getAddress().getCity()).willReturn("Stormwind");
         assertThat(contactInfo.getAddress().getCity()).isEqualTo("Stormwind");
-
     }
 }

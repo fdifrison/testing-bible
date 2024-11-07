@@ -21,6 +21,5 @@ public class UserAssert extends AbstractAssert<UserAssert, User> {
             failWithMessage("Expected user to have username %s", username);
         }
         return this;
-
     }
 }

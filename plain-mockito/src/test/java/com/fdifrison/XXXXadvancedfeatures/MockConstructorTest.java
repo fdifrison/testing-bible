@@ -1,20 +1,17 @@
 package com.fdifrison.XXXXadvancedfeatures;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.*;
+
 import com.fdifrison.app.JpaUserRepository;
 import com.fdifrison.app.User;
 import com.fdifrison.util.UserAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.MockedConstruction;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class MockConstructorTest {
@@ -28,7 +25,8 @@ public class MockConstructorTest {
         // TODO we can instruct mockito to mock all the constructor calls of a class in a try-with-resources block;
         //  calling a method of the object from outside the scope will invoke the concrete implementation, we would then
         //  need to mock the whole object to be able to stub its methods.
-        try (var mockedConstructor = mockConstruction(JpaUserRepository.class,
+        try (var mockedConstructor = mockConstruction(
+                JpaUserRepository.class,
                 // We can add additional stubbing
                 (mock, context) -> {
                     given(mock.findByUsername("fdifrison")).willReturn(new User().setUsername("fdifrison"));
@@ -39,16 +37,14 @@ public class MockConstructorTest {
             var user = repository.save(new User());
             var retrieved = repository.findByUsername("fdifrison");
 
-            Mockito.verify(repository).findByUsername("fdifrison");
+            then(repository).should().findByUsername("fdifrison");
+            verify(repository).findByUsername("fdifrison");
             UserAssert.assertThat(user).hasUsername("fdifrison");
             UserAssert.assertThat(user).hasUsername(retrieved.getUsername());
 
             // TODO with constructed() we can get a reference to the mock
             var constructedMock = mockedConstructor.constructed();
             assertThat(constructedMock).hasSize(1);
-
         }
     }
-
-
 }

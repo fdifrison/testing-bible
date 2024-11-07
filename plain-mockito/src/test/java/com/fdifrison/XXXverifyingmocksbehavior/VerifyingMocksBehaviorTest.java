@@ -1,5 +1,11 @@
 package com.fdifrison.XXXverifyingmocksbehavior;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
+
 import com.fdifrison.app.*;
 import com.fdifrison.util.UserAssert;
 import org.instancio.Instancio;
@@ -8,12 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class VerifyingMocksBehaviorTest {
@@ -50,7 +50,6 @@ public class VerifyingMocksBehaviorTest {
         // TODO with verifyNoMoreInteractions() we are telling mockito that all the planned interaction between the
         //  two mocks have been verified, and to raise an error if it not so
         verifyNoMoreInteractions(bannedUsersClient, userRepository);
-
     }
 
     @Test
@@ -59,14 +58,12 @@ public class VerifyingMocksBehaviorTest {
         var user = Instancio.create(User.class).setUsername("fdifrison").setId(null);
         var saved = userRepository.save(user);
         given(bannedUsersClient.isBanned(anyString(), any())).willReturn(false);
-        given(userRepository.findByUsername("fdifrison"))
-                .willReturn(saved);
-        given(userRepository.save(any(User.class)))
-                .willAnswer(invocation -> {
-                    var savedUser = invocation.getArgument(0, User.class);
-                    savedUser.setId(1L);
-                    return savedUser;
-                });
+        given(userRepository.findByUsername("fdifrison")).willReturn(saved);
+        given(userRepository.save(any(User.class))).willAnswer(invocation -> {
+            var savedUser = invocation.getArgument(0, User.class);
+            savedUser.setId(1L);
+            return savedUser;
+        });
 
         var registered = classUnderTest.registerUser("fdifrison", Instancio.create(ContactInformation.class));
 
@@ -78,7 +75,6 @@ public class VerifyingMocksBehaviorTest {
         inOrder.verifyNoMoreInteractions();
 
         UserAssert.assertThat(registered).hasUsername("fdifrison").isNotNull();
-
     }
 
     @Test
@@ -87,13 +83,14 @@ public class VerifyingMocksBehaviorTest {
         var contactInformation = Instancio.create(ContactInformation.class);
         given(bannedUsersClient.isBanned(anyString(), any())).willReturn(false);
         given(userRepository.findByUsername("fdifrison")).willReturn(null);
-        given(userRepository.save(any(User.class))).willReturn(new User().setUsername("fdifrison").setEmail(contactInformation.getEmail()));
+        given(userRepository.save(any(User.class)))
+                .willReturn(new User().setUsername("fdifrison").setEmail(contactInformation.getEmail()));
         var registered = classUnderTest.registerUser("fdifrison", contactInformation);
 
-        // TODO argumentsCaptors allow us to investigate the objects used or returned by the mocks during the verify phase
+        // TODO argumentsCaptors allow us to investigate the objects used or returned by the mocks during the verify
+        // phase
         verify(userRepository).save(userArgumentCaptor.capture());
         var capturedUser = userArgumentCaptor.getValue();
         assertThat(registered.getEmail()).isEqualTo(capturedUser.getEmail());
     }
-
 }

@@ -1,14 +1,14 @@
 package com.fdifrison.XXXXadvancedfeatures;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.BDDMockito.given;
+
 import com.fdifrison.app.BannedUsersClient;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
 public class SpyTest {
@@ -24,13 +24,13 @@ public class SpyTest {
     @DisplayName("Base spy usage")
     void baseSpyUsage() {
         var result = bannedUsersClient.amountOfBannedAccounts();
-        assertThat(result).isEqualTo(42)
+        assertThat(result)
+                .isEqualTo(42)
                 .describedAs("Should return the value hardcoded in the concrete implementation");
 
         given(bannedUsersClient.amountOfBannedAccounts()).willReturn(500);
-        assertThat(bannedUsersClient.amountOfBannedAccounts()).isEqualTo(500)
+        assertThat(bannedUsersClient.amountOfBannedAccounts())
+                .isEqualTo(500)
                 .describedAs("Now the spy return the value stabbed");
-
     }
-
 }

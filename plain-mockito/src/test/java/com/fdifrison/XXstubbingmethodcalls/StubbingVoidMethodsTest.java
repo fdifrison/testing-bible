@@ -1,15 +1,15 @@
 package com.fdifrison.XXstubbingmethodcalls;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doThrow;
+
 import com.fdifrison.app.EventNotifier;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doThrow;
 
 @ExtendWith(MockitoExtension.class)
 public class StubbingVoidMethodsTest {
@@ -20,7 +20,8 @@ public class StubbingVoidMethodsTest {
     @Test
     @DisplayName("Stubbing a void method")
     void testVoidMethod() {
-        // TODO If the method under test return void we need to use a different approach; first we define the behavior and
+        // TODO If the method under test return void we need to use a different approach; first we define the behavior
+        // and
         //  after on which method call
         doThrow(new RuntimeException()).when(notifier).notifyNewUserCreation(anyString());
         assertThatThrownBy(() -> notifier.notifyNewUserCreation("fdifrison")).isInstanceOf(RuntimeException.class);
@@ -31,12 +32,11 @@ public class StubbingVoidMethodsTest {
     void testVoidMethodWithDifferentBehavior() {
         doThrow(new RuntimeException("Error on second call"))
                 .doNothing()
-                .when(notifier).notifyNewUserCreation(anyString());
+                .when(notifier)
+                .notifyNewUserCreation(anyString());
         assertThatThrownBy(() -> notifier.notifyNewUserCreation("fdifrison"))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("Error on second call");
         notifier.notifyNewUserCreation("fdifrison");
-
     }
-
 }

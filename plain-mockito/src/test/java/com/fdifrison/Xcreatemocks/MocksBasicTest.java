@@ -33,6 +33,7 @@ class MocksBasicTest {
 
         @Mock
         private SimpleRepository repository;
+
         @InjectMocks
         private SimpleService service;
 
@@ -56,6 +57,7 @@ class MocksBasicTest {
     class MockWithMockExtension {
         @Mock
         private SimpleRepository repository;
+
         @InjectMocks
         private SimpleService service;
 
@@ -65,5 +67,4 @@ class MocksBasicTest {
             service.sayHello();
         }
     }
-
 }

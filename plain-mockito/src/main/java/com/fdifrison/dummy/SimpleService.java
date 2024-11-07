@@ -9,8 +9,8 @@ public class SimpleService {
     }
 
     public void sayHello() {
-        System.out.printf("Hello World from a Service! It's using the [%s] repository!%n", repository.getClass().getSimpleName());
+        System.out.printf(
+                "Hello World from a Service! It's using the [%s] repository!%n",
+                repository.getClass().getSimpleName());
     }
-
-
 }
