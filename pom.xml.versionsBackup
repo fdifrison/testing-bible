@@ -17,11 +17,11 @@
 
     <properties>
         <maven.compiler.release>24</maven.compiler.release>
-        <instancio-junit.version>5.4.1</instancio-junit.version>
-        <spotless-maven-plugin.version>2.44.4</spotless-maven-plugin.version>
-        <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
-        <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
-        <htmlunit.version>4.11.1</htmlunit.version>
+        <instancio-junit.version>5.0.2</instancio-junit.version>
+        <spotless-maven-plugin.version>2.44.0.BETA3</spotless-maven-plugin.version>
+        <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <htmlunit.version>4.2.0</htmlunit.version>
     </properties>
 
     <modules>

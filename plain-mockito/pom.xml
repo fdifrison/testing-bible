@@ -12,7 +12,6 @@
     <artifactId>plain-mockito</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>org.instancio</groupId>
             <artifactId>instancio-junit</artifactId>
