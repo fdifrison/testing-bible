@@ -1,5 +1,5 @@
 package com.fdifrison.app;
 
 public interface EventNotifier {
-    void notifyNewUserCreation(String username);
+  void notifyNewUserCreation(String username);
 }

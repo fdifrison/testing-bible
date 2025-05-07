@@ -2,29 +2,29 @@ package com.fdifrison.app;
 
 public class ContactInformation {
 
-    private String email;
-    private Address address;
+  private String email;
+  private Address address;
 
-    public ContactInformation() {}
+  public ContactInformation() {}
 
-    public ContactInformation(String email, Address address) {
-        this.email = email;
-        this.address = address;
-    }
+  public ContactInformation(String email, Address address) {
+    this.email = email;
+    this.address = address;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public Address getAddress() {
-        return address;
-    }
+  public Address getAddress() {
+    return address;
+  }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+  public void setAddress(Address address) {
+    this.address = address;
+  }
 }

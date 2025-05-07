@@ -18,31 +18,31 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class BDDStubbingStyleTest {
 
-    @Mock
-    private UserRepository userRepository;
+  @Mock private UserRepository userRepository;
 
-    @Mock
-    private BannedUsersClient bannedUsersClient;
+  @Mock private BannedUsersClient bannedUsersClient;
 
-    @InjectMocks
-    private RegistrationService classUnderTest;
+  @InjectMocks private RegistrationService classUnderTest;
 
-    @Test
-    @DisplayName("Basic stubbing with BDD style")
-    void basicStubbingWithBDDStyle() {
-        // TODO using given instead of the "when-then" pattern
-        //  using then instead of the "verify" phase
-        given(bannedUsersClient.isBanned(anyString(), any())).willReturn(false);
-        given(userRepository.findByUsername("fdifrison")).willReturn(null);
-        given(userRepository.save(any(User.class))).willAnswer(invocation -> {
-            var savedUser = invocation.getArgument(0, User.class);
-            savedUser.setId(1L);
-            return savedUser;
-        });
-        var registered = classUnderTest.registerUser("fdifrison", Instancio.create(ContactInformation.class));
+  @Test
+  @DisplayName("Basic stubbing with BDD style")
+  void basicStubbingWithBDDStyle() {
+    // TODO using given instead of the "when-then" pattern
+    //  using then instead of the "verify" phase
+    given(bannedUsersClient.isBanned(anyString(), any())).willReturn(false);
+    given(userRepository.findByUsername("fdifrison")).willReturn(null);
+    given(userRepository.save(any(User.class)))
+        .willAnswer(
+            invocation -> {
+              var savedUser = invocation.getArgument(0, User.class);
+              savedUser.setId(1L);
+              return savedUser;
+            });
+    var registered =
+        classUnderTest.registerUser("fdifrison", Instancio.create(ContactInformation.class));
 
-        then(userRepository).should().findByUsername("fdifrison");
-        then(bannedUsersClient).should().isBanned(anyString(), any());
-        assertThat(registered).hasFieldOrPropertyWithValue("id", 1L);
-    }
+    then(userRepository).should().findByUsername("fdifrison");
+    then(bannedUsersClient).should().isBanned(anyString(), any());
+    assertThat(registered).hasFieldOrPropertyWithValue("id", 1L);
+  }
 }
