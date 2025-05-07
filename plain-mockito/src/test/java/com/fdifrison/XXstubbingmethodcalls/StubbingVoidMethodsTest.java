@@ -21,8 +21,7 @@ public class StubbingVoidMethodsTest {
     @DisplayName("Stubbing a void method")
     void testVoidMethod() {
         // TODO If the method under test return void we need to use a different approach; first we define the behavior
-        // and
-        //  after on which method call
+        //  and  after on which method call
         doThrow(new RuntimeException()).when(notifier).notifyNewUserCreation(anyString());
         assertThatThrownBy(() -> notifier.notifyNewUserCreation("fdifrison")).isInstanceOf(RuntimeException.class);
     }

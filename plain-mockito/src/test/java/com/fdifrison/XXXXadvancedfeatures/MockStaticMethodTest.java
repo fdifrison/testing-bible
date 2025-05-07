@@ -19,9 +19,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class MockStaticMethodTest {
 
     // TODO To create mocks mockito use the MockMaker interface from the bytebuddy library and the default behavior is
-    // subclassing.
+    //  subclassing.
     //  To be able to stub static method, mockito need a different mocking strategy called "inline" (see in pom
-    // mockito-inline).
+    //  mockito-inline).
 
     @Mock
     private UserRepository userRepository;
@@ -43,7 +43,7 @@ public class MockStaticMethodTest {
 
         try (var mockedLocalDateTime = mockStatic(LocalDateTime.class)) {
             // TODO the static mock implementation is thread local, therefore, outside the try-with resources the
-            // LocalDateTime
+            //  LocalDateTime
             //  class will retain its normal behavior
             mockedLocalDateTime.when(LocalDateTime::now).thenReturn(defaultDate);
 

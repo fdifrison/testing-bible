@@ -35,7 +35,7 @@ public class StubbingMocksMethodCallsTest {
     @DisplayName("Mock methods default behavior if not stubbed")
     void defaultBehavior() {
         // TODO If mocks behavior is not stubbed, mockito will fall back to null for objects and the default value for
-        // primitives
+        //  primitives
         var user = userRepository.findByUsername("fdifrison");
         assertThat(user).isNull();
         var saved = userRepository.save(Instancio.of(User.class).create());
