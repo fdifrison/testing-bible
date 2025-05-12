@@ -11,6 +11,7 @@ import org.springframework.web.client.RestClient;
  * post-service returns the all posts with pagination. The client should fetch all pages and return
  * the result as a list.
  */
+// TODO see: https://rieckpil.de/course/tsbdr-tdd-example-2-fetching-remote-data/
 @Component
 class PostClient {
 

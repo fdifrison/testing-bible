@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
  * return 'more than a year'. - A comment within today should return 'today'. - A date in the future
  * is invalid and should throw an exception.
  */
+
+//TODO see: https://rieckpil.de/course/tsbdr-tdd-example-1-time-utility/
 @Component
 class TimeUtil {
 
