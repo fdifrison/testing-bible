@@ -23,15 +23,21 @@
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <htmlunit.version>4.11.1</htmlunit.version>
         <google-java-format.version>1.27.0</google-java-format.version>
+        <spring-cloud-aws-dependencies.version>3.3.0</spring-cloud-aws-dependencies.version>
+        <testcontainers-bom.version>1.20.6</testcontainers-bom.version>
+        <p6spy.version>3.9.1</p6spy.version>
+        <wiremock.version>3.0.3</wiremock.version>
     </properties>
 
+
     <modules>
-        <module>primer</module>
         <module>plain-mockito</module>
         <module>tdd</module>
+        <module>masterclass</module>
     </modules>
 
     <dependencyManagement>
+
         <dependencies>
             <dependency>
                 <groupId>org.instancio</groupId>
@@ -43,7 +49,38 @@
                 <artifactId>htmlunit</artifactId>
                 <version>${htmlunit.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.awspring.cloud</groupId>
+                <artifactId>spring-cloud-aws-dependencies</artifactId>
+                <version>${spring-cloud-aws-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-testcontainers</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>${p6spy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.awaitility</groupId>
+                <artifactId>awaitility</artifactId>
+                <version>4.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wiremock</groupId>
+                <artifactId>wiremock-standalone</artifactId>
+                <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
+
+
     </dependencyManagement>
 
     <build>

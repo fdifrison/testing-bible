@@ -1,8 +1,7 @@
 package com.fdifrison;
 
-import java.util.List;
-
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,5 @@ public class CommentService {
     return List.of();
   }
 
-  public void saveComment(@Valid CommentCreationRequest comment, Authentication authentication) {
-
-  }
+  public void saveComment(@Valid CommentCreationRequest comment, Authentication authentication) {}
 }

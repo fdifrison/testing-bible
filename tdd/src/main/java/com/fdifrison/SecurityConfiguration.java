@@ -16,9 +16,13 @@ public class SecurityConfiguration {
 
     http.authorizeHttpRequests(
         request ->
-            request.requestMatchers(HttpMethod.GET).permitAll()
-                    .requestMatchers(HttpMethod.POST).hasRole("ADMIN")
-                    .anyRequest().authenticated());
+            request
+                .requestMatchers(HttpMethod.GET)
+                .permitAll()
+                .requestMatchers(HttpMethod.POST)
+                .hasRole("ADMIN")
+                .anyRequest()
+                .authenticated());
     http.httpBasic(Customizer.withDefaults()).csrf(AbstractHttpConfigurer::disable);
 
     return http.build();

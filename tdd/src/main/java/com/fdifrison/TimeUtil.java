@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * is invalid and should throw an exception.
  */
 
-//TODO see: https://rieckpil.de/course/tsbdr-tdd-example-1-time-utility/
+// TODO see: https://rieckpil.de/course/tsbdr-tdd-example-1-time-utility/
 @Component
 class TimeUtil {
 
@@ -27,7 +27,7 @@ class TimeUtil {
 
     if (timeBetween.isNegative()) {
       throw new IllegalArgumentException("Date is in the future");
-    }  else if (timeBetween.getYears() > 0) {
+    } else if (timeBetween.getYears() > 0) {
       return DisplayDate.MORE_THAN_A_YEAR.name();
     } else if (timeBetween.getMonths() == 1) {
       return DisplayDate.LAST_MONTH.name();
@@ -49,4 +49,3 @@ class TimeProvider {
     return LocalDate.now();
   }
 }
-

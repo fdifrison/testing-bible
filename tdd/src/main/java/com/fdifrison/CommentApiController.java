@@ -1,11 +1,9 @@
 package com.fdifrison;
 
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.List;
 
 /**
  * Develop a REST API to retrieve and create comments. Everybody should be able to retrieve comments
@@ -28,8 +26,7 @@ class CommentApiController {
 
   @PostMapping
   public void addComment(
-      @Valid @RequestBody CommentCreationRequest comment,
-      Authentication authentication) {
-      commentService.saveComment(comment, authentication);
+      @Valid @RequestBody CommentCreationRequest comment, Authentication authentication) {
+    commentService.saveComment(comment, authentication);
   }
 }

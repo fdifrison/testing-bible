@@ -12,7 +12,7 @@
     <artifactId>tdd</artifactId>
 
     <properties>
-        <wiremock.version>3.0.1</wiremock.version>
+
     </properties>
 
 
@@ -51,9 +51,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-jre8-standalone</artifactId>
-            <version>${wiremock.version}</version>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock-standalone</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
