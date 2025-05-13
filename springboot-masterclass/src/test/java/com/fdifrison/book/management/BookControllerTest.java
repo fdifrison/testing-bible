@@ -1,6 +1,5 @@
 package com.fdifrison.book.management;
 
-
 import com.fdifrison.config.WebSecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

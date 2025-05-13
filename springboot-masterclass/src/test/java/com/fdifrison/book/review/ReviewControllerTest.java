@@ -1,6 +1,5 @@
 package com.fdifrison.book.review;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fdifrison.config.WebSecurityConfig;
 import org.junit.jupiter.api.Test;

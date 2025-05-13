@@ -1,35 +1,37 @@
 package com.fdifrison.book.review;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ReviewVerifier {
 
-  private boolean doesNotContainSwearWords(String review) {
-    return !review.contains("shit");
-  }
+  private final List<String> swearWords = List.of("shit", "fuck", "bitch", "asshole");
 
   public boolean doesMeetQualityStandards(String review) {
 
-    if (review.contains("Lorem ipsum")) {
-      return false;
-    }
+    var words = review.split(" ");
 
-    String[] words = review.split(" ");
+    if (containsLoremIpsum(words)) return false;
+    else if (hasRepetitions(words, "I", 5)) return false;
+    else if (hasRepetitions(words, "good", 3)) return false;
+    else if (containSwearWords(words)) return false;
+    else return words.length > 10;
+  }
 
-    if (Arrays.stream(words).filter(s -> s.equalsIgnoreCase("I")).count() >= 5) {
-      return false;
-    }
+  private boolean hasRepetitions(String[] words, String word, int count) {
+    return Arrays.stream(words).filter(s -> s.equalsIgnoreCase(word)).count() >= count;
+  }
 
-    if (Arrays.stream(words).filter(s -> s.equalsIgnoreCase("good")).count() >= 3) {
-      return false;
-    }
+  private boolean containsLoremIpsum(String[] words) {
+    return Stream.of("lorem", "ipsum")
+        .anyMatch(w -> Arrays.stream(words).anyMatch(w::equalsIgnoreCase));
+  }
 
-    if (words.length <= 10) {
-      return false;
-    }
-
-    return doesNotContainSwearWords(review);
+  private boolean containSwearWords(String[] words) {
+    return swearWords.stream()
+        .anyMatch(swear -> Arrays.stream(words).anyMatch(swear::equalsIgnoreCase));
   }
 }
