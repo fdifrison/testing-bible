@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
 
     <properties>
+        <java.version>23</java.version>
         <maven.compiler.release>23</maven.compiler.release>
         <instancio-junit.version>5.4.1</instancio-junit.version>
         <spotless-maven-plugin.version>2.44.4</spotless-maven-plugin.version>
@@ -35,7 +36,7 @@
     <modules>
         <module>plain-mockito</module>
         <module>tdd</module>
-        <module>masterclass</module>
+        <module>springboot-masterclass</module>
     </modules>
 
     <dependencyManagement>

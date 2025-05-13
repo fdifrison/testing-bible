@@ -16,8 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 class BookControllerTwoTest {
 
-  @MockitoBean
-  private BookManagementService bookManagementService;
+  @MockitoBean private BookManagementService bookManagementService;
 
   @Autowired private MockMvc mockMvc;
 
