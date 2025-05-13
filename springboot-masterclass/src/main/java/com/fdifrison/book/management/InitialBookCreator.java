@@ -38,8 +38,6 @@ public class InitialBookCreator {
     if (bookRepository.count() == 0) {
       LOG.info("Going to initialize first set of books");
       for (String isbn : List.of("9780321751041", "9780321160768", "9780596004651")) {
-        // enforce uniqueness of messages as messages might get stuck in the mock SQS queue
-        // otheriwse
         Map<String, Object> messageHeaders =
             Map.of("x-custom-header", UUID.randomUUID().toString());
         sqsTemplate.send(

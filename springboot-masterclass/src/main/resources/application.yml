@@ -2,8 +2,8 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.yml
   datasource:
-    password: test
-    username: test
+    password:
+    username:
     url: jdbc:postgresql://localhost:5432/postgres
   security:
     oauth2:
@@ -13,14 +13,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+    open-in-view: off
   cloud:
     aws:
       region:
         static: eu-central-1
       endpoint: http://localhost:9324
       credentials:
-        secret-key: foo
-        access-key: bar
+        secret-key:
+        access-key:
+  jackson:
+    default-property-inclusion: non_null
 
 clients:
   open-library:

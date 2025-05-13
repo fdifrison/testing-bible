@@ -1,6 +1,5 @@
 package com.fdifrison.cache;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.fdifrison.book.management.Book;
 import com.fdifrison.book.management.BookController;
@@ -19,8 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @Import(WebSecurityConfig.class)
 class BookControllerOneTest {
 
-  @MockitoBean
-  private BookManagementService bookManagementService;
+  @MockitoBean private BookManagementService bookManagementService;
 
   @Autowired private MockMvc mockMvc;
 

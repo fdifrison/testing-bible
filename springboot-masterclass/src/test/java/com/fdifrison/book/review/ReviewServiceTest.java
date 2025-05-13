@@ -1,7 +1,5 @@
 package com.fdifrison.book.review;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 import com.fdifrison.book.management.BookRepository;
 import com.fdifrison.book.management.UserService;

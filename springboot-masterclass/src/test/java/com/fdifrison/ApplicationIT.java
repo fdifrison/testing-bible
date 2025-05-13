@@ -5,16 +5,13 @@ import static org.awaitility.Awaitility.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
-
-import java.io.IOException;
-import java.util.UUID;
-
 import com.fdifrison.book.management.BookRepository;
 import com.fdifrison.initializer.DefaultBookStubsInitializer;
 import com.fdifrison.initializer.WireMockInitializer;
+import java.io.IOException;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;

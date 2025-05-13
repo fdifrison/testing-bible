@@ -21,8 +21,8 @@ public class OpenLibraryRestTemplateApiClient {
     this.restTemplate =
         restTemplateBuilder
             .rootUri("https://openlibrary.org")
-            .setConnectTimeout(Duration.ofSeconds(2))
-            .setReadTimeout(Duration.ofSeconds(2))
+            .connectTimeout(Duration.ofSeconds(2))
+            .readTimeout(Duration.ofSeconds(2))
             .build();
   }
 

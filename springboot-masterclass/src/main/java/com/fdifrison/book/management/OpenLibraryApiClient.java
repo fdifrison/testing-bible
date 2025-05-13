@@ -2,23 +2,22 @@ package com.fdifrison.book.management;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import java.time.Duration;
+import java.util.Objects;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.util.retry.Retry;
+import org.springframework.web.client.RestClient;
 
 @Component
 public class OpenLibraryApiClient {
 
-  private final WebClient openLibraryWebClient;
+  private final RestClient openLibraryWebClient;
 
-  public OpenLibraryApiClient(WebClient openLibraryWebClient) {
+  public OpenLibraryApiClient(RestClient openLibraryWebClient) {
     this.openLibraryWebClient = openLibraryWebClient;
   }
 
   public Book fetchMetadataForBook(String isbn) {
 
-    ObjectNode result =
+    var result =
         openLibraryWebClient
             .get()
             .uri(
@@ -30,11 +29,9 @@ public class OpenLibraryApiClient {
                         .queryParam("bibkeys", isbn)
                         .build())
             .retrieve()
-            .bodyToMono(ObjectNode.class)
-            .retryWhen(Retry.fixedDelay(2, Duration.ofMillis(200)))
-            .block();
+            .body(ObjectNode.class);
 
-    JsonNode content = result.get(isbn);
+    JsonNode content = Objects.requireNonNull(result).get(isbn);
 
     return convertToBook(isbn, content);
   }

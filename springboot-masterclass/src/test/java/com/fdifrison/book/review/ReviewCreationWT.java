@@ -1,16 +1,14 @@
 package com.fdifrison.book.review;
 
-import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import java.io.File;
-import java.util.logging.Level;
-
 import com.fdifrison.AbstractWebTest;
 import com.fdifrison.book.management.Book;
 import com.fdifrison.book.management.BookRepository;
+import java.io.File;
+import java.util.logging.Level;
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

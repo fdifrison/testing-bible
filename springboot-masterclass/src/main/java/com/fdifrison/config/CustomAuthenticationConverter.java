@@ -3,6 +3,7 @@ package com.fdifrison.config;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,7 +12,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 
 public class CustomAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
-  public AbstractAuthenticationToken convert(Jwt jwt) {
+  public AbstractAuthenticationToken convert(@NotNull Jwt jwt) {
     Collection<GrantedAuthority> authorities = extractAuthorities(jwt);
     return new JwtAuthenticationToken(jwt, authorities);
   }
