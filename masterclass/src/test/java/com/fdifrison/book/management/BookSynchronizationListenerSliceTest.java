@@ -16,10 +16,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
@@ -70,9 +70,9 @@ class BookSynchronizationListenerSliceTest {
 
   @Autowired private BookSynchronizationListener cut;
 
-  @MockBean private BookRepository bookRepository;
+  @MockitoBean private BookRepository bookRepository;
 
-  @MockBean private OpenLibraryApiClient openLibraryApiClient;
+  @MockitoBean private OpenLibraryApiClient openLibraryApiClient;
 
   @Test
   void shouldStartSQS() {}

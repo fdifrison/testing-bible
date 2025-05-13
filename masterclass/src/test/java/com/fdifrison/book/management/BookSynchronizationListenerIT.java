@@ -1,9 +1,9 @@
 package com.fdifrison.book.management;
 
+import com.fdifrison.initializer.RSAKeyGenerator;
+import com.fdifrison.stubs.OAuth2Stubs;
+import com.fdifrison.stubs.OpenLibraryStubs;
 import com.nimbusds.jose.JOSEException;
-import de.rieckpil.courses.initializer.RSAKeyGenerator;
-import de.rieckpil.courses.stubs.OAuth2Stubs;
-import de.rieckpil.courses.stubs.OpenLibraryStubs;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.reactive.server.WebTestClient;

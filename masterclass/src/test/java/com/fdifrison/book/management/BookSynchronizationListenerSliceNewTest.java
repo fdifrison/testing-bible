@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.junit.jupiter.Container;
@@ -30,7 +30,7 @@ class BookSynchronizationListenerSliceNewTest {
   @Container
   static LocalStackContainer localStack =
       new LocalStackContainer(DockerImageName.parse("localstack/localstack:1.4.0"))
-          .withServices(LocalStackContainer.Service.SQS)
+          .withServices(SQS)
           .withLogConsumer(new Slf4jLogConsumer(LOG));
 
   private static final String QUEUE_NAME = UUID.randomUUID().toString();
@@ -54,9 +54,9 @@ class BookSynchronizationListenerSliceNewTest {
 
   @Autowired private SqsTemplate sqsTemplate;
 
-  @MockBean private BookRepository bookRepository;
+  @MockitoBean private BookRepository bookRepository;
 
-  @MockBean private OpenLibraryApiClient openLibraryApiClient;
+  @MockitoBean private OpenLibraryApiClient openLibraryApiClient;
 
   @Test
   void shouldConsumeMessageWhenPayloadIsCorrect() {}

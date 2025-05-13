@@ -1,7 +1,9 @@
 package com.fdifrison.initializer;
 
-import de.rieckpil.courses.stubs.OpenLibraryStubs;
+
 import java.io.IOException;
+
+import com.fdifrison.stubs.OpenLibraryStubs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;

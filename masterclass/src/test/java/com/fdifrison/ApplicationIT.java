@@ -5,11 +5,13 @@ import static org.awaitility.Awaitility.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
-import de.rieckpil.courses.book.management.BookRepository;
-import de.rieckpil.courses.initializer.DefaultBookStubsInitializer;
-import de.rieckpil.courses.initializer.WireMockInitializer;
+
 import java.io.IOException;
 import java.util.UUID;
+
+import com.fdifrison.book.management.BookRepository;
+import com.fdifrison.initializer.DefaultBookStubsInitializer;
+import com.fdifrison.initializer.WireMockInitializer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +27,6 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-@ExtendWith(AllureReportingExtension.class)
 @Testcontainers(disabledWithoutDocker = true)
 @ActiveProfiles({"default", "integration-test"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

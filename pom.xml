@@ -24,9 +24,11 @@
         <htmlunit.version>4.11.1</htmlunit.version>
         <google-java-format.version>1.27.0</google-java-format.version>
         <spring-cloud-aws-dependencies.version>3.3.0</spring-cloud-aws-dependencies.version>
-        <testcontainers-bom.version>1.20.6</testcontainers-bom.version>
         <p6spy.version>3.9.1</p6spy.version>
         <wiremock.version>3.0.3</wiremock.version>
+        <spring-boot-testcontainers.version>3.4.5</spring-boot-testcontainers.version>
+        <okhttp.version>4.12.0</okhttp.version>
+        <selenide.version>7.9.2</selenide.version>
     </properties>
 
 
@@ -37,7 +39,6 @@
     </modules>
 
     <dependencyManagement>
-
         <dependencies>
             <dependency>
                 <groupId>org.instancio</groupId>
@@ -56,12 +57,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-testcontainers</artifactId>
-            </dependency>
             <dependency>
                 <groupId>p6spy</groupId>
                 <artifactId>p6spy</artifactId>
@@ -73,9 +68,33 @@
                 <version>4.2.1</version>
             </dependency>
             <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-testcontainers</artifactId>
+                <version>${spring-boot-testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.wiremock</groupId>
                 <artifactId>wiremock-standalone</artifactId>
                 <version>${wiremock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>mockwebserver</artifactId>
+                <version>${okhttp.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.codeborne</groupId>
+                <artifactId>selenide</artifactId>
+                <version>${selenide.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

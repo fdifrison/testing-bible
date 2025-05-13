@@ -1,7 +1,7 @@
 package com.fdifrison.book.management;
 
+import com.fdifrison.AbstractIntegrationTest;
 import com.nimbusds.jose.JOSEException;
-import de.rieckpil.courses.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.reactive.server.WebTestClient;

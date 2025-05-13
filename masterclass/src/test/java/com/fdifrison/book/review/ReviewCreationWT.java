@@ -5,11 +5,12 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import de.rieckpil.courses.AbstractWebTest;
-import de.rieckpil.courses.book.management.Book;
-import de.rieckpil.courses.book.management.BookRepository;
 import java.io.File;
 import java.util.logging.Level;
+
+import com.fdifrison.AbstractWebTest;
+import com.fdifrison.book.management.Book;
+import com.fdifrison.book.management.BookRepository;
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

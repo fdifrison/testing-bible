@@ -2,6 +2,12 @@ package com.fdifrison;
 
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
+import com.fdifrison.book.management.BookRepository;
+import com.fdifrison.book.review.ReviewRepository;
+import com.fdifrison.initializer.RSAKeyGenerator;
+import com.fdifrison.initializer.WireMockInitializer;
+import com.fdifrison.stubs.OAuth2Stubs;
+import com.fdifrison.stubs.OpenLibraryStubs;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JOSEObjectType;
@@ -10,12 +16,7 @@ import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import de.rieckpil.courses.book.management.BookRepository;
-import de.rieckpil.courses.book.review.ReviewRepository;
-import de.rieckpil.courses.initializer.RSAKeyGenerator;
-import de.rieckpil.courses.initializer.WireMockInitializer;
-import de.rieckpil.courses.stubs.OAuth2Stubs;
-import de.rieckpil.courses.stubs.OpenLibraryStubs;
+
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;

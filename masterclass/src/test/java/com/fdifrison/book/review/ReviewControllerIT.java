@@ -1,8 +1,8 @@
 package com.fdifrison.book.review;
 
+import com.fdifrison.AbstractIntegrationTest;
+import com.fdifrison.book.management.BookRepository;
 import com.nimbusds.jose.JOSEException;
-import de.rieckpil.courses.AbstractIntegrationTest;
-import de.rieckpil.courses.book.management.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.reactive.server.WebTestClient;

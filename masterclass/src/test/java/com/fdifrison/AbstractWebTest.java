@@ -1,9 +1,11 @@
 package com.fdifrison;
 
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
-import de.rieckpil.courses.initializer.WireMockInitializer;
+
 import java.io.File;
 import java.time.Duration;
+
+import com.fdifrison.initializer.WireMockInitializer;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.slf4j.Logger;

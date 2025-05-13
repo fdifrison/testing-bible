@@ -3,8 +3,8 @@ package com.fdifrison.book.review;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import de.rieckpil.courses.book.management.BookRepository;
-import de.rieckpil.courses.book.management.UserService;
+import com.fdifrison.book.management.BookRepository;
+import com.fdifrison.book.management.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

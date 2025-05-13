@@ -2,21 +2,22 @@ package com.fdifrison.cache;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import de.rieckpil.courses.book.management.Book;
-import de.rieckpil.courses.book.management.BookController;
-import de.rieckpil.courses.book.management.BookManagementService;
+import com.fdifrison.book.management.Book;
+import com.fdifrison.book.management.BookController;
+import com.fdifrison.book.management.BookManagementService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(BookController.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 class BookControllerTwoTest {
 
-  @MockBean private BookManagementService bookManagementService;
+  @MockitoBean
+  private BookManagementService bookManagementService;
 
   @Autowired private MockMvc mockMvc;
 
