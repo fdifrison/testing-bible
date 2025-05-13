@@ -1,9 +1,9 @@
 package com.fdifrison.pages;
 
-import com.codeborne.selenide.Condition;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+
+import com.codeborne.selenide.Condition;
 
 public class NewReviewPage {
 

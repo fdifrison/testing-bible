@@ -1,11 +1,11 @@
 package com.fdifrison.stubs;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import de.rieckpil.courses.initializer.RSAKeyGenerator;
 import org.springframework.http.MediaType;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 
 public class OAuth2Stubs {
 

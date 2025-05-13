@@ -1,8 +1,7 @@
 package com.fdifrison.book.management;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")

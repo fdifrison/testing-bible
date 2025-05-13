@@ -1,17 +1,16 @@
 package com.fdifrison.book.review;
 
+import static java.lang.annotation.ElementType.PARAMETER;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
-
-import static java.lang.annotation.ElementType.PARAMETER;
 
 public class RandomReviewParameterResolverExtension implements ParameterResolver {
 

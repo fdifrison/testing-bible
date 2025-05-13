@@ -1,10 +1,11 @@
 package com.fdifrison.book.management;
 
-import java.io.IOException;
-import java.util.UUID;
+import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import io.awspring.cloud.test.sqs.SqsTest;
+import java.io.IOException;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -18,8 +19,6 @@ import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
 @SqsTest(BookSynchronizationListener.class)
 @Testcontainers(disabledWithoutDocker = true)

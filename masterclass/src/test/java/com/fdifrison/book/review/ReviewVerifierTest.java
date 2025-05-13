@@ -1,5 +1,8 @@
 package com.fdifrison.book.review;
 
+import static com.fdifrison.book.review.RandomReviewParameterResolverExtension.RandomReview;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -7,9 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-
-import static com.fdifrison.book.review.RandomReviewParameterResolverExtension.RandomReview;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @ExtendWith(RandomReviewParameterResolverExtension.class)
 class ReviewVerifierTest {

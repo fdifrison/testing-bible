@@ -1,5 +1,8 @@
 package com.fdifrison.book.review;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 import de.rieckpil.courses.book.management.BookRepository;
 import de.rieckpil.courses.book.management.UserService;
 import org.junit.jupiter.api.DisplayName;
@@ -8,9 +11,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ReviewServiceTest {

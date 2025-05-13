@@ -1,11 +1,15 @@
 package com.fdifrison;
 
-import java.io.IOException;
-import java.util.UUID;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
 import de.rieckpil.courses.book.management.BookRepository;
 import de.rieckpil.courses.initializer.DefaultBookStubsInitializer;
 import de.rieckpil.courses.initializer.WireMockInitializer;
+import java.io.IOException;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,11 +24,6 @@ import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
 @ExtendWith(AllureReportingExtension.class)
 @Testcontainers(disabledWithoutDocker = true)

@@ -1,9 +1,8 @@
 package com.fdifrison.book.management;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import java.util.Objects;
 import org.hibernate.annotations.NaturalId;
 
 @Entity

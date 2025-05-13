@@ -1,9 +1,9 @@
 package com.fdifrison.book.management;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class OpenLibraryApiClientTest {
 

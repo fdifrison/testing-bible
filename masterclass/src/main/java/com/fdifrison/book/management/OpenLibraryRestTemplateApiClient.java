@@ -1,10 +1,9 @@
 package com.fdifrison.book.management;
 
-import java.time.Duration;
-import java.util.Collections;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.time.Duration;
+import java.util.Collections;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

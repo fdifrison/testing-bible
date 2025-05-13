@@ -1,10 +1,9 @@
 package com.fdifrison.book.review;
 
-import java.time.LocalDateTime;
-
-import de.rieckpil.courses.book.management.Book;
-import de.rieckpil.courses.book.management.User;
+import com.fdifrison.book.management.Book;
+import com.fdifrison.book.management.User;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reviews")
