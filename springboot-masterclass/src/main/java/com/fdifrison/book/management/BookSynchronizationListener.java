@@ -23,7 +23,7 @@ public class BookSynchronizationListener {
   @SqsListener("${sqs.book-synchronization-queue}")
   public void consumeBookUpdates(BookSynchronization bookSynchronization) {
 
-    String isbn = bookSynchronization.isbn();
+    var isbn = bookSynchronization.isbn();
     LOG.info("Incoming book update for isbn '{}'", isbn);
 
     if (isbn.length() != 13) {
@@ -36,7 +36,7 @@ public class BookSynchronizationListener {
       return;
     }
 
-    Book book = openLibraryApiClient.fetchMetadataForBook(isbn);
+    var book = openLibraryApiClient.fetchMetadataForBook(isbn);
     book = bookRepository.save(book);
 
     LOG.info("Successfully stored new book '{}'", book);
