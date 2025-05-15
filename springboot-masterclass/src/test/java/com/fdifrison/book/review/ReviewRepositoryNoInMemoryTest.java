@@ -2,17 +2,23 @@ package com.fdifrison.book.review;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @DataJpaTest(
-    properties = {"spring.liquibase.enabled=false", "spring.jpa.hibernate.ddl-auto=create"})
+    properties = {
+      "spring.liquibase.enabled=false",
+      "spring.jpa.hibernate.ddl-auto=create",
+      "spring.jpa.show-sql=true",
+      "spring.jpa.properties.hibernate.format_sql=true",
+      "logging.level.org.hibernate.engine.transaction=DEBUG",
+    })
 // TODO manage the lifecycle of the container
 // @Testcontainers(disabledWithoutDocker = true)
 // TODO stop spring to autoconfigure an in-memory db
@@ -49,21 +55,19 @@ class ReviewRepositoryNoInMemoryTest {
 
   @Autowired private ReviewRepository cut;
 
+  // TODO testing a native query
   @Test
-  void verifySetup() {
-    assertThat(container).isNotNull();
-    assertThat(cut).isNotNull();
-
-    var review = Instancio.create(Review.class).setId(null).setBook(null).setUser(null);
-    var result = cut.save(review);
-
-    assertThat(result.getId()).isNotNull();
+  // TODO to disable the @Transactional given by @DataJpaTest for a single testcase. Modification to
+  //  the db will be committed
+  // @Rollback(false)
+  @Sql(scripts = "/scripts/INIT_REVIEW_EACH_BOOK.sql")
+  void shouldGetTwoReviewStatisticsWhenDatabaseContainsTwoBooksWithReview() {
+    assertThat(cut.count()).isEqualTo(3L);
+    assertThat(cut.getReviewStatistics()).hasSize(2);
   }
 
-  //  @Test
-  //  @Sql(scripts = "/scripts/INIT_REVIEW_EACH_BOOK.sql")
-  //  void shouldGetTwoReviewStatisticsWhenDatabaseContainsTwoBooksWithReview() {}
-  //
-  //  @Test
-  //  void databaseShouldBeEmpty() {}
+  @Test
+  void databaseShouldBeEmpty() {
+    assertThat(cut.count()).isZero();
+  }
 }
