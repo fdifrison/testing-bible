@@ -33,8 +33,9 @@ public class Review {
     return id;
   }
 
-  public void setId(Long id) {
+  public Review setId(Long id) {
     this.id = id;
+    return this;
   }
 
   public String getTitle() {
@@ -73,16 +74,18 @@ public class Review {
     return book;
   }
 
-  public void setBook(Book book) {
+  public Review setBook(Book book) {
     this.book = book;
+    return this;
   }
 
   public User getUser() {
     return user;
   }
 
-  public void setUser(User user) {
+  public Review setUser(User user) {
     this.user = user;
+    return this;
   }
 
   @Override
