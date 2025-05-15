@@ -1,41 +1,69 @@
 package com.fdifrison.book.review;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.springframework.test.context.jdbc.Sql;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
-@DataJpaTest
-@Testcontainers(disabledWithoutDocker = true)
+@DataJpaTest(
+    properties = {"spring.liquibase.enabled=false", "spring.jpa.hibernate.ddl-auto=create"})
+// TODO manage the lifecycle of the container
+// @Testcontainers(disabledWithoutDocker = true)
+// TODO stop spring to autoconfigure an in-memory db
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class ReviewRepositoryNoInMemoryTest {
 
-  @Container
+  // TODO in conjunction with @Testcontainers manage the container lifecycle (don't work with reuse)
+  // @Container
+  // TODO autoconfigure the datasource connections properties
+  @ServiceConnection
   static PostgreSQLContainer<?> container =
-      new PostgreSQLContainer<>("postgres:12.3")
+      new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"))
           .withDatabaseName("test")
           .withUsername("duke")
-          .withPassword("s3cret");
+          .withPassword("s3cret")
+          // TODO reusable container across tests; we also need to add
+          //  "testcontainers.reuse.enable=true" in the .testcontainers.properties file, usually
+          //  under /home/username and start the container manually from a static block as explained
+          //  in https://java.testcontainers.org/features/reuse/
+          .withReuse(true);
 
-  @DynamicPropertySource
-  static void properties(DynamicPropertyRegistry registry) {
-    registry.add("spring.datasource.url", container::getJdbcUrl);
-    registry.add("spring.datasource.password", container::getPassword);
-    registry.add("spring.datasource.username", container::getUsername);
+  // TODO in some cases it can be useful to manage manually the container lifecycle:
+  static {
+    container.start();
   }
+
+  // TODO set dynamically properties in the application context, substituted by @ServiceConnection
+  //  @DynamicPropertySource
+  //  static void properties(DynamicPropertyRegistry registry) {
+  //    registry.add("spring.datasource.url", container::getJdbcUrl);
+  //    registry.add("spring.datasource.password", container::getPassword);
+  //    registry.add("spring.datasource.username", container::getUsername);
+  //  }
 
   @Autowired private ReviewRepository cut;
 
   @Test
-  @Sql(scripts = "/scripts/INIT_REVIEW_EACH_BOOK.sql")
-  void shouldGetTwoReviewStatisticsWhenDatabaseContainsTwoBooksWithReview() {}
+  void verifySetup() {
+    assertThat(container).isNotNull();
+    assertThat(cut).isNotNull();
 
-  @Test
-  void databaseShouldBeEmpty() {}
+    var review = Instancio.create(Review.class).setId(null).setBook(null).setUser(null);
+    var result = cut.save(review);
+
+    assertThat(result.getId()).isNotNull();
+  }
+
+  //  @Test
+  //  @Sql(scripts = "/scripts/INIT_REVIEW_EACH_BOOK.sql")
+  //  void shouldGetTwoReviewStatisticsWhenDatabaseContainsTwoBooksWithReview() {}
+  //
+  //  @Test
+  //  void databaseShouldBeEmpty() {}
 }

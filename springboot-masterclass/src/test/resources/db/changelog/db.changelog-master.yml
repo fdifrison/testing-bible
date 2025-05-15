@@ -1,0 +1,151 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: fdifrison
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: Duke
+              - column:
+                  name: email
+                  value: duke@spring.io
+              - column:
+                  name: created_at
+                  value: 2020-08-11T07:45:00.500+02:00
+  - changeSet:
+      id: 2
+      author: fdifrison
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: title
+                  value: Java 14
+              - column:
+                  name: isbn
+                  value: 1234567891234
+              - column:
+                  name: author
+                  value: duke
+              - column:
+                  name: genre
+                  value: Software Engineering
+              - column:
+                  name: thumbnail_url
+                  value: http://localhost:8080/image.png
+              - column:
+                  name: description
+                  value: New features of Java 14
+              - column:
+                  name: publisher
+                  value: JavaPublisher
+              - column:
+                  name: pages
+                  valueNumeric: 42
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: title
+                  value: Spring Boot
+              - column:
+                  name: isbn
+                  value: 1234567891235
+              - column:
+                  name: author
+                  value: duke
+              - column:
+                  name: genre
+                  value: Software Engineering
+              - column:
+                  name: thumbnail_url
+                  value: http://localhost:8080/imageTwo.png
+              - column:
+                  name: description
+                  value: Development with Spring Boot
+              - column:
+                  name: publisher
+                  value: SpringIO
+              - column:
+                  name: pages
+                  valueNumeric: 42
+  - changeSet:
+      id: 3
+      author: fdifrison
+      changes:
+        - insert:
+            tableName: reviews
+            columns:
+              - column:
+                  name: title
+                  value: Nice book!
+              - column:
+                  name: content
+                  value: Can recommend reading it
+              - column:
+                  name: rating
+                  valueNumeric: 5
+              - column:
+                  name: created_at
+                  value: 2020-08-11T07:45:00.500+02:00
+              - column:
+                  name: book_id
+                  valueNumeric: 1
+              - column:
+                  name: user_id
+                  valueNumeric: 1
+        - insert:
+            tableName: reviews
+            columns:
+              - column:
+                  name: title
+                  value: Did not understand anything
+              - column:
+                  name: content
+                  value: To advanced for beginners
+              - column:
+                  name: rating
+                  valueNumeric: 1
+              - column:
+                  name: created_at
+                  value: 2020-08-11T07:45:00.500+02:00
+              - column:
+                  name: book_id
+                  valueNumeric: 2
+              - column:
+                  name: user_id
+                  valueNumeric: 1
+        - insert:
+            tableName: reviews
+            columns:
+              - column:
+                  name: title
+                  value: Too easy
+              - column:
+                  name: content
+                  value: Nice examples, but think this book is rather for beginners
+              - column:
+                  name: rating
+                  valueNumeric: 5
+              - column:
+                  name: created_at
+                  value: 2020-08-11T07:45:00.500+02:00
+              - column:
+                  name: book_id
+                  valueNumeric: 2
+              - column:
+                  name: user_id
+                  valueNumeric: 1
